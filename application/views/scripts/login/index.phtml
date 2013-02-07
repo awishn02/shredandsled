@@ -1,0 +1,31 @@
+<?if($this->logged_in):?>
+    <div class="hero-unit well">
+        <h1>You are already logged in!</h1>
+        <a href="/home" class="btn btn-primary">Go to the home page</a>
+    </div>
+<?else:?>
+    <?if($this->failed_login):?>
+        <div class="alert alert-error">
+            The username and password you have entered did not work.
+        </div>
+    <?endif;?>
+    <form class="form-horizontal" method="POST">
+        <div class="control-group">
+            <label for="user" class="control-label required">User</label>
+            <div class="controls">
+                <input type="text" id="user" name="user"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="password" class="control-label required">Password</label>
+            <div class="controls">
+                <input type="password" id="password" name="password"/>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+<?endif;?>

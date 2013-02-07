@@ -1,0 +1,155 @@
+<div class="row-fluid">
+    <div class="span10">
+        <img src="/img/news.png">
+        <?if($this->email_exists):?>
+            <div class="alert alert-error">
+                <p class="lead"><strong>Woops!</strong> That email is already on our mailing list.</p>
+            </div>
+        <?endif;?>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div id="news-table" class="span9">
+        </div>
+        <div class="span3">
+            <div style="">
+                <?if($this->logged_in):?>
+                    <div class="span2 alert alert-info">
+                        <h2>Hey <?=$this->user;?> post some news!</h2>
+                        <a href="#post" data-toggle="modal" class="btn btn-primary"><i class="icon-pencil icon-white"></i> Post</a>
+                    </div>
+                <?endif;?>
+                <div class="span2 alert alert-info">
+                    <h2>Follow us on:</h2>
+                    <a href="https://www.facebook.com/groups/375329062560837/" target="_blank"><img src="img/fb_logo_snow.png"></a>
+                    <a href="https://twitter.com/ShredAndSled"><img src="img/twitter_logo_snow.png"></a>
+                    <br>
+                    <a href="#mail" data-toggle="modal" class="btn btn-primary"><i class="icon-envelope icon-white"></i> Join our mailing list</a>
+                </div>
+                <div id="ots_flashcontent" class="span2">
+                    <h3>
+                        <a href="http://www.onthesnow.com" target="_blank">Snow reports</a>
+                        provided by OnTheSnow. The snow report widget is most likely not displaying because you have JavaScript disabled. To see the
+                        <a href="http://www.onthesnow.com" target="_blank">Ski Report</a>
+                        for every ski area in the world visit <a href="http://www.onthesnow.com" target="_blank">OnTheSnow</a>
+                        or click on these popular regions:</h3>
+                    <ul>
+                        <li>
+                            <a href="http://www.onthesnow.com/new-hampshire/loon-mountain/skireport.html">Loon Mountain</a>
+                        </li>
+                        <li>
+                            <a href="http://www.onthesnow.com/vermont/stowe-mountain-resort/skireport.html">Stowe Mountain Resort</a>
+                        </li>
+                        <li>
+                            <a href="http://www.onthesnow.com/vermont/jay-peak/skireport.html">Jay Peak</a>
+                        </li>
+                        <li>
+                            <a href="http://www.onthesnow.com/vermont/killington-resort/skireport.html">Killington Resort</a>
+                        </li>
+                        <li>
+                            <a href="http://www.onthesnow.com/vermont/okemo-mountain-resort/skireport.html">Okemo Mountain Resort</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mail" class="modal hide fade">
+    <form class="form-horizontal" method="POST">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Join Our Mailing List</h3>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="shred_action" name="shred_action" value="mailing">
+            <div class="control-group">
+                <label for="first_name" class="control-label">First Name</label>
+                <div class="controls">
+                    <input type="text" id="first_name" name="first_name">
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="last_name" class="control-label">Last Name</label>
+                <div class="controls">
+                    <input type="text" id="last_name" name="last_name">
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="email" class="control-label">Email</label>
+                <div class="controls">
+                    <input type="text" id="email" name="email">
+                </div>
+            </div>
+            <!--
+            <div class="control-group">
+                <label for="car" class="control-label">Do you have a car?</label>
+                <div class="controls">
+                    No <input type="checkbox" id="car" name="car" value="No" checked="checked">
+                    Yes <input type="checkbox" id="car" name="car" value="Yes">
+                </div>
+            </div>
+            -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <input type="submit" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+
+<div id="post" class="modal hide fade">
+    <form class="form-horizontal" method="post">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>News Post</h3>
+    </div>
+    <div class="modal-body">
+            <input type="hidden" id="shred_action" name="shred_action" value="post">
+            <div class="control-group">
+                <label for="comment" class="control-label required">Post</label>
+                <div class="controls">
+                    <textarea rows=10 style="width:300px" id="comment" name="comment"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="quote" class="control-label required">Quote</label>
+                <div class="controls">
+                    <textarea rows=5 style="width:300px" id="quote" name="quote"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="quote_author" class="control-label required">Quote Author</label>
+                <div class="controls">
+                    <input type="text" id="quote_author" name="quote_author">
+                </div>
+            </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <input type="submit" class="btn btn-primary"> <!--id="post_btn" class="btn btn-primary">Post</a>-->
+    </div>
+    </form>
+</div>
+
+<script>
+    NewsTable.init('<?=$this->news_json;?>')
+</script>
+
+<!--Snow report widget-->
+<script type="text/javascript" src="http://images.onthesnow.com/ots/widget/ots_widget2.js"></script>
+<script type="text/javascript">
+    var ots_params = {};
+    ots_params.wmode = "transparent";
+    var ots_vars = {};
+    ots_vars.allowScriptAccess = "always";
+    ots_vars.ref = location.host;ots_vars.gregion = "";
+    ots_vars.region = "";
+    ots_vars.resortList = "198,216,192,429,304";
+    ots_vars.wcolor = "6";
+    ots_vars.lan = "en";
+    ots_vars.weather = "1";
+    swfobject.embedSWF("http://www.onthesnow.com/ots/widget/snowreports.swf", "ots_flashcontent", "275", "420", "8", "http://www.onthesnow.com/ots/widget/expressInstall.swf", ots_vars, ots_params);
+</script>

@@ -1,0 +1,117 @@
+/* headers */
+.round4 {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.video-wrapper {
+  /*
+  restrict video width?
+  width: 500px;
+  max-width: 100%;
+  */
+
+  background: transparent url(/img/diagonal_stripe_10.png);
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -webkit-box-shadow: 11px 11px 0px rgba(0, 0, 0, 0.08), transparent 0 0 0;
+  -moz-box-shadow: 11px 11px 0px rgba(0, 0, 0, 0.08), transparent 0 0 0;
+  box-shadow: 11px 11px 0px rgba(0, 0, 0, 0.08), transparent 0 0 0;
+  margin: 0 0 18px;
+}
+.video-wrapper2 {
+  padding: 9px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border: 1px solid #394d60;
+  -webkit-box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 0.6), inset 0px 1px 0px #ffffff;
+  -moz-box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 0.6), inset 0px 1px 0px #ffffff;
+  box-shadow: inset 0px 0px 1px rgba(255, 255, 255, 0.6), inset 0px 1px 0px #ffffff;
+  background: transparent url(/img/white_50.png);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.6)), color-stop(50%, rgba(255, 255, 255, 0.4)), color-stop(100%, rgba(255, 255, 255, 0.4)));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 100%);
+  /* IE10+ */
+
+  background: linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 100%);
+  /* W3C */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#99ffffff', endColorstr='#66ffffff', GradientType=0);
+  /* IE6-9 */
+
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.loading_block {
+  height: 300px;
+  position: relative;
+  text-align: center;
+}
+.loading_block img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -24px;
+  /* half of image width */
+
+  margin-top: -24px;
+  /* half of image height */
+
+}
+.pagination {
+  height: 28px;
+}
+.pagination a {
+  cursor: pointer;
+  padding: 0 13px;
+  line-height: 26px;
+  border-left-width: 0;
+  -webkit-box-shadow: inset 1px 1px 0px #ffffff, inset -1px -1px 0px #ffffff;
+  -moz-box-shadow: inset 1px 1px 0px #ffffff, inset -1px -1px 0px #ffffff;
+  box-shadow: inset 1px 1px 0px #ffffff, inset -1px -1px 0px #ffffff;
+}
+.pagination a:hover,
+.pagination .active a {
+  background: #fff;
+}
+.pagination .active a,
+.pagination .disabled span,
+.pagination .disabled a,
+.pagination .disabled a:hover {
+  color: #394d60;
+  background: #e6ecf2;
+  -webkit-box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0), inset -1px -1px 0px rgba(255, 255, 255, 0);
+  -moz-box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0), inset -1px -1px 0px rgba(255, 255, 255, 0);
+  box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0), inset -1px -1px 0px rgba(255, 255, 255, 0);
+}
+.pagination ul li:only-child a {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}

@@ -1,0 +1,65 @@
+<div class="pagination">
+    <ul>
+        <? for($i=1; $i <= $this->total_pages; $i++):
+            if ($i == $this->page):?>
+                <li class="active"><a ><?= $i; ?></a></li>
+            <? else:?>
+                <li><a onclick="ForumTable.show('<?= $i;?>');"><?= $i; ?></a></li>
+            <? endif; ?>
+        <? endfor; ?>
+    </ul>
+</div>
+<div id="post_table" class="">
+    <?if($this->comments):?>
+        <?foreach($this->comments as $comment):?>
+            <div class="well">
+                <h2 class="span7">
+                    <?if($this->logged_in):?>
+                        <a href="#delete" data-toggle="modal" data-to_delete="<?=$comment['id'];?>" class="btn btn-danger deleting">Delete</a>
+                    <?endif;?>
+                    <?=stripslashes($comment['title']);?>
+                </h2>
+                <p style="margin-top:5px" class="lead"><?= $this->utils()->format_date($comment['created']);?></p>
+                <br><br>
+                <p class="offset1 lead"><?=stripslashes($comment['comment']);?></p>
+                <br>
+                <p class="offset7 lead span2">-- <?=stripslashes($comment['name']);?></p>
+                <?php $replies = $this->utils()->getReplies($comment['id']);?>
+                <?foreach($replies as $reply):?>
+                    <hr class="offset1" width="80%">
+                    <div class="">
+                        <h2 class="span7">
+                            <?if($this->logged_in):?>
+                                <a href="#delete" data-toggle="modal" data-to_delete="<?=$reply['id'];?>" class="btn btn-danger deleting">Delete</a>
+                            <?endif;?>
+                            <?=$reply['title'];?>
+                        </h2>
+                        <p style="margin-top:5px" class="lead"><?= $this->utils()->format_date($reply['created']);?></p>
+                        <br><br>
+                        <p class="offset1 lead"><?=$reply['comment'];?></p>
+                        <br>
+                        <p class="offset7 lead span2">-- <?=$reply['name'];?></p>
+                    </div>
+                <?endforeach;?>
+                <a href="#post" id="reply" data-toggle="modal" class="btn btn-large offset7 posting" data-reply_to="<?=$comment['id'];?>" data-title="<?=$comment['title'];?>"><i class="icon-comment"></i> Reply</a>
+            </div>
+        <?endforeach;?>
+    <?else:?>
+        <div class="hero-unit well">
+            <h1>No comments yet!</h1>
+            <br>
+            <a href="#post" data-toggle="modal" class="btn btn-large btn-primary posting"><i class="icon-comment icon-white"></i> Be the first!</a>
+        </div>
+    <?endif;?>
+</div>
+<div class="pagination">
+    <ul>
+        <? for($i=1; $i <= $this->total_pages; $i++):
+            if ($i == $this->page):?>
+                <li class="active"><a ><?= $i; ?></a></li>
+            <? else:?>
+                <li><a onclick="ForumTable.show('<?= $i;?>');"><?= $i; ?></a></li>
+            <? endif; ?>
+        <? endfor; ?>
+    </ul>
+</div>

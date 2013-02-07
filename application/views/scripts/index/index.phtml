@@ -1,0 +1,96 @@
+
+<div class="span12">       
+        <div class=" demo-1">
+            <div id="slider" class="sl-slider-wrapper">
+
+				<div class="sl-slider">
+                                        
+					<div id="holder" class="sl-slide bg-3">
+						<div class="sl-slide-inner">
+						</div>
+					</div>
+					<div class="sl-slide bg-1" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+						<div class="sl-slide-inner">
+                                                        <a href="#" id="enter">
+                                                            <div class="deco"><img src="/img/tufts.jpg"></div>
+                                                            <h2 style="margin-top:50px" id="front_page">
+                                                                <img src="/img/front_page.png">
+                                                            </h2>
+                                                            <blockquote>
+                                                                <p>
+                                                                    The sensual caress of waist deep cold smoke.... glory in skiing virgin snow,
+                                                                    in being the first to mark the powder with the signature of their run.
+                                                                </p>
+                                                                <cite>Tim Cahill</cite>
+                                                                <br><br>
+                                                                <img src="/img/enter_alt.png">
+                                                            </blockquote>
+                                                            
+                                                        </a>
+                                                </div>
+					</div>
+					
+					<div class="sl-slide bg-2">
+						<div class="sl-slide-inner ">
+						    <?= $this->partial("shared/navbar.phtml", array("index" => true));?>
+						    <?= $this->partial("home/index.phtml", array("news_json" => $this->news_json)); ?>
+                                                    <?= $this->partial("shared/footer.phtml");?>
+						</div>
+					</div>
+				</div><!-- /sl-slider -->
+
+			</div><!-- /slider-wrapper -->
+
+        </div>
+</div>
+		<script type="text/javascript">	
+			$(function() {
+			
+				var Page = (function() {
+
+				    var $enter = $( '#enter' ),
+				    slitslider = $( '#slider' ).slitslider({
+                                        keyboard: false,
+                                        autoplay: false,
+                                        interval: 100,
+                                        onAfterChange: function(slide, idx){
+                                            if(idx == 2){
+                                                window.location = "/home"
+                                            }
+                                        }
+                                    }),
+
+                        	    init = function() {
+					initEvents();
+                                    }
+				    initEvents = function() {
+					// add navigation events
+                                        slitslider.next();
+                                        $enter.on('click', function(){
+                                            slitslider.next();
+                                            return false;
+                                        })
+				    };
+				    return { init : init };
+
+				})();
+
+				Page.init();
+
+				/**
+				 * Notes: 
+				 * 
+				 * example how to add items:
+				 */
+
+				/*
+				
+				var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
+				
+				// call the plugin's add method
+				ss.add($items);
+
+				*/
+			
+			});
+		</script>

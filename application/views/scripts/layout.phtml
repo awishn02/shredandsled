@@ -1,0 +1,33 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tufts Shred and Sled is a student run club from Tufts University devoted to uniting the skiers and snowboarders on campus and getting them up to the mountains."/>
+    <meta name="keywords" content="Tufts University, Skiing, Snowboarding, Club, Tufts"/>
+    <title><?=$this->pageTitle;?></title>
+    <?php $this->cssHelper($this->css_files) ?>
+    <?php $this->javascriptHelper($this->js_files) ?>
+    <?php echo $this->headScript() ?>
+    <?php echo $this->headLink() ?>
+</head>
+<body>
+    
+    <div id="wrap">
+        <?if(!$this->index):?>
+            <?php include "shared/navbar.phtml"; ?>
+        <?endif;?>
+
+        <div id="main" class="container-fluid">
+            <div id="content" class="row-fluid">
+               <?php echo $this->layout()->content ?>
+            </div> <!-- end #content -->
+        </div> <!-- end #main -->
+
+    </div> <!-- end #wrap -->
+    
+    <?if(!$this->index):?>
+        <?php include "shared/footer.phtml"; ?>
+    <?endif;?>
+</body>
+</html>

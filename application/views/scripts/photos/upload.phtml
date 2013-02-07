@@ -1,0 +1,50 @@
+<div class="span12">
+    <?if($this->logged_in):?>
+        <div id="dropbox">
+            <span class="message"><h2>Drop images here to upload.</h2></span>
+        </div>
+    <?else:?>
+        <div class="hero-unit well">
+            <h1>You must be logged in to access this.</h1>
+            <a href="/login" class="btn btn-primary btn-large">Login</a>
+        </div>
+    <?endif;?>
+</div>
+
+<div id="title_modal" class="modal fade">
+    <div class="modal-header">
+        <button type="button" class="close closing" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Album Title</h3>
+    </div>
+    <div class="modal-body">
+        <div class="control-group">
+            <label for="title" class="control-label">Album Title</label>
+            <div class="controls">
+                <input type="text" id="title" name="title">
+                <span class="help-inline" id="msgError" style="display:none; color:red"><strong>You must add a title.</strong></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary closing" data-dismiss="modal" aria-hidden="true">Submit title</button>
+    </div>
+</div>
+
+<?if($this->logged_in):?>
+<script>
+    var title;
+    $("#title_modal").modal({
+        backdrop: false
+    })
+    $("#title_modal").modal('show')
+    $(".closing").click(function(){
+        title = $("#title").val()
+        if(title == ""){
+            $("#msgError").show()
+            return false;
+        }
+        init_dropbox()
+        return true;
+    })
+</script>
+<?endif;?>
